@@ -12,7 +12,7 @@ def run(
     tenancy_ocid=None,
     user_ocid=None,
     fingerprint=None,
-    private_key_path=None,
+    private_key=None,
     regions=None,  # Changed from region to regions to support multiple
     label=None,
     compartment_id=None,  # NEW
@@ -21,7 +21,7 @@ def run(
         tenancy_ocid=tenancy_ocid,
         user_ocid=user_ocid,
         fingerprint=fingerprint,
-        private_key_path=private_key_path,
+        private_key=private_key,
         regions=regions,  # Changed to regions
         label=label,
         compartment_id=compartment_id,  # NEW
@@ -35,7 +35,7 @@ class OCIAsset(AssetInventoryBase):
         tenancy_ocid: 'ocid1.tenancy.oc1..xxxxx'
         user_ocid: 'ocid1.user.oc1..xxxxx'
         fingerprint: 'xx:xx:xx:xx:xx'
-        private_key_path: '/path/to/private_key.pem'
+        private_key: '/path/to/private_key.pem'
         regions: 'us-ashburn-1, us-phoenix-1'  # You can enter one region or multiple. If entering multiple regions
                                                # It must be a comma separated list
         label: 'TEST'
@@ -70,7 +70,7 @@ class OCIAsset(AssetInventoryBase):
         "tenancy_ocid",
         "user_ocid",
         "fingerprint",
-        "private_key_path",
+        "private_key",
         "regions",  # Changed to regions
         "label",
         # compartment_id is optional, so we don't include it here
@@ -427,18 +427,18 @@ class OCIAsset(AssetInventoryBase):
 
 # Local testing (optional)
 if __name__ == "__main__":
-    # os.environ["OCI_TENANCY_ID"] = "ocid1.tenancy.oc1..aaaaaaaa4jve3lkei7lyb3efdnvybx7h27na55j5iylfilnlwni5trouigwa"
-    # os.environ["OCI_USER_ID"] = "ocid1.user.oc1..aaaaaaaabibbphgrf5ow3ybcxp7vxbasgil4ltowrji5etfzaaokw4zvugeq"
-    # os.environ["OCI_FINGERPRINT"] = "88:2c:a5:2c:fb:ff:23:a2:b6:e9:24:72:17:a2:50:95"
+    # os.environ["OCI_TENANCY_ID"] = "ocid1.tenancy.oc1.."
+    # os.environ["OCI_USER_ID"] = "ocid1.user.oc1.."
+    # os.environ["OCI_FINGERPRINT"] = "88:"
     # os.environ["OCI_REGION"] = "us-ashburn-1"  # Can be "us-ashburn-1, us-phoenix-1" for multiple regions
-    # os.environ["OCI_PRIVATE_KEY_PATH"] = "/home/ayush/accuknox/scan-tools/oci-keys/steampipe_key.pem"
-    # os.environ["OCI_COMPARTMENT_ID"] = "ocid1.compartment.oc1..aaaaaaaadervu5zucgpfbrmh5gkyay7dxvxhfthjwf7cphukbqjjpwryclaq"
+    # os.environ["OCI_private_key"] = "/home/ayush/accuknox/scan-tools/oci-keys/steampipe_key.pem"
+    # os.environ["OCI_COMPARTMENT_ID"] = "ocid1.compartment.oc1.."
 
     run(
         tenancy_ocid=os.environ["OCI_TENANCY_ID"],
         user_ocid=os.environ["OCI_USER_ID"],
         fingerprint=os.environ["OCI_FINGERPRINT"],
-        private_key_path=os.environ["OCI_PRIVATE_KEY"],
+        private_key=os.environ["OCI_PRIVATE_KEY"],
         regions=os.environ["OCI_REGION"],  # Changed to regions parameter
         label="TEST",
         compartment_id=os.environ["OCI_COMPARTMENT_ID"],  # optional

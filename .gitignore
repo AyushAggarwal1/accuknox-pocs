@@ -10,3 +10,6 @@
 */.coverage.*.*.*.*
 /keys/
 /cs-accuknox/
+/configs/
+/.oci/
+/.steampipe/

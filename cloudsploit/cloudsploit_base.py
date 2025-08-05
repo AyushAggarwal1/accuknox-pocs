@@ -57,13 +57,13 @@ class CloudsploitSetUpMixin:
             query += f"--console=none"
 
         elif module_name == "cloudsploit_gcp":
-            query += "--config=./cloudsploit_config_gcp.js --console=none"
+            query += "--config=/home/ayush/accuknox/accuknox-pocs/configs/cloudsploit/config.js --console=none"
 
         elif module_name == "cloudsploit_azure":
-            query += "--config=./cloudsploit_config_azure.js --console=none"
+            query += "--config=/home/ayush/accuknox/accuknox-pocs/configs/cloudsploit/config.js --console=none"
         
         elif module_name == "cloudsploit_oracle":
-            query += "--config=./config.js --console=none"
+            query += "--config=/home/ayush/accuknox/accuknox-pocs/configs/cloudsploit/config.js --console=none"
 
         if self.compliance is not None and self.compliance != "":
             attrs = " ".join(f"--compliance={each}" for each in self.compliance_attrs)

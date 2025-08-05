@@ -3,9 +3,17 @@ poc of security tools
 
 1. Create `keys` folder
 
-2. For `steampipe` 
+2. Create a `configs` folder
+    - For `cloudsploit` 
+        - Add `cloudsploit_config_oracle.json`
+        - Add `config.js` from `config-example.js`
+        - In `config.js` just replace the `credential_file` path
+    
+    - For `steampipe`
+
+3. For `steampipe` 
     - Install steampipe and oci Plugin
-    - In `.oci` folder create config
+    - In `.oci` folder create `config` file
     ```shell
         [DEFAULT]
         user=ocid1.user.
@@ -14,7 +22,7 @@ poc of security tools
         tenancy=ocid1.tenancy.
         region=us-ashburn-1
     ```
-    - In `.steampipe/config` folder create 
+    - In `.steampipe/config` folder create `oci.spc`
     ```shell
         connection "oci" {
         plugin = "oci"
@@ -32,12 +40,10 @@ poc of security tools
         }
     ```
 
-3. For `cloudsploit`
+4. For `cloudsploit`
     - Clone `cloudsploit` in `cloudsploit/` folder
-    - Create another folder named `configs` inside `cloudsploit/<cloned-cloudsploit>/`
-    - Then copy `config_example.js` to `configs/config.js`
-    - Then create `cloudsploit_config_oracle.json` for `oracle` and just give path in `config.js`
-    - cmd to run `node index.js --config ./configs/config.js --json results.json`
+    - Create another folder named `configs` inside `cloudsploit/<cloned-cloudsploit>/`    
+    - cmd to run `node index.js --config /home/ayush/accuknox/accuknox-pocs/configs/cloudsploit/config.js  --json cs-results.json`
     ```shell
         {
             "tenancyId": "ocid1.tenancy.oc1..",
@@ -49,5 +55,4 @@ poc of security tools
         }
 
     ```
-**Oracle Cloud**
-
+    
