@@ -1,0 +1,12 @@
+*/__pycache__/
+*/.DS_Store
+*/.vscode/
+*/.idea/
+*/.pytest_cache/
+*/.coverage/
+*/.coverage.*
+*/.coverage.*.*
+*/.coverage.*.*.*
+*/.coverage.*.*.*.*
+/keys/
+/cs-accuknox/
