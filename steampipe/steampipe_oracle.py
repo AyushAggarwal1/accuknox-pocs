@@ -9,19 +9,19 @@ from asset_inventory_base import AssetInventoryBase
 
 
 def run(
-    tenancy_ocid=None,
-    user_ocid=None,
+    tenancy=None,
+    user=None,
     fingerprint=None,
-    private_key=None,
+    key_file=None,
     regions=None,  # Changed from region to regions to support multiple
     label=None,
     compartment_id=None,  # NEW
 ):
     kwargs = dict(
-        tenancy_ocid=tenancy_ocid,
-        user_ocid=user_ocid,
+        tenancy=tenancy,
+        user=user,
         fingerprint=fingerprint,
-        private_key=private_key,
+        key_file=key_file,
         regions=regions,  # Changed to regions
         label=label,
         compartment_id=compartment_id,  # NEW
@@ -32,10 +32,10 @@ def run(
 class OCIAsset(AssetInventoryBase):
     """
     Pillar Example:
-        tenancy_ocid: 'ocid1.tenancy.oc1..xxxxx'
-        user_ocid: 'ocid1.user.oc1..xxxxx'
+        tenancy: 'ocid1.tenancy.oc1..xxxxx'
+        user: 'ocid1.user.oc1..xxxxx'
         fingerprint: 'xx:xx:xx:xx:xx'
-        private_key: '/path/to/private_key.pem'
+        key_file: '/path/to/key_file.pem'
         regions: 'us-ashburn-1, us-phoenix-1'  # You can enter one region or multiple. If entering multiple regions
                                                # It must be a comma separated list
         label: 'TEST'
@@ -67,10 +67,10 @@ class OCIAsset(AssetInventoryBase):
     )
 
     _fields = [
-        "tenancy_ocid",
-        "user_ocid",
+        "tenancy",
+        "user",
         "fingerprint",
-        "private_key",
+        "key_file",
         "regions",  # Changed to regions
         "label",
         # compartment_id is optional, so we don't include it here
@@ -427,18 +427,42 @@ class OCIAsset(AssetInventoryBase):
 
 # Local testing (optional)
 if __name__ == "__main__":
-    # os.environ["OCI_TENANCY_ID"] = "ocid1.tenancy.oc1.."
-    # os.environ["OCI_USER_ID"] = "ocid1.user.oc1.."
-    # os.environ["OCI_FINGERPRINT"] = "88:"
-    # os.environ["OCI_REGION"] = "us-ashburn-1"  # Can be "us-ashburn-1, us-phoenix-1" for multiple regions
-    # os.environ["OCI_private_key"] = "/home/ayush/accuknox/scan-tools/oci-keys/steampipe_key.pem"
-    # os.environ["OCI_COMPARTMENT_ID"] = "ocid1.compartment.oc1.."
+    # Set up environment variables for Steampipe OCI plugin
+    # These are the correct environment variable names that Steampipe expects
+    os.environ["OCI_TENANCY"] = os.environ.get("OCI_TENANCY_ID", "")
+    os.environ["OCI_USER"] = os.environ.get("OCI_USER_ID", "")
+    os.environ["OCI_FINGERPRINT"] = os.environ.get("OCI_FINGERPRINT", "")
+    os.environ["OCI_PRIVATE_KEY"] = os.environ.get("OCI_key_file", "")
+    os.environ["OCI_REGION"] = os.environ.get("OCI_REGION", "")
+
+    # Create OCI config file from environment variables
+    import os
+    from pathlib import Path
+    
+    # Create the OCI config directory if it doesn't exist
+    oci_config_dir = Path.home() / ".oci"
+    oci_config_dir.mkdir(exist_ok=True)
+    
+    # Create the OCI config file
+    oci_config_file = oci_config_dir / "config"
+    config_content = f"""[DEFAULT]
+    user={os.environ.get('OCI_USER_ID', '')}
+    fingerprint={os.environ.get('OCI_FINGERPRINT', '')}
+    key_file={os.environ.get('OCI_key_file', '')}
+    tenancy={os.environ.get('OCI_TENANCY_ID', '')}
+    region={os.environ.get('OCI_REGION', '')}
+    """
+    
+    with open(oci_config_file, 'w') as f:
+        f.write(config_content)
+    
+    print(f"OCI config file created at: {oci_config_file}")
 
     run(
-        tenancy_ocid=os.environ["OCI_TENANCY_ID"],
-        user_ocid=os.environ["OCI_USER_ID"],
+        tenancy=os.environ["OCI_TENANCY_ID"],
+        user=os.environ["OCI_USER_ID"],
         fingerprint=os.environ["OCI_FINGERPRINT"],
-        private_key=os.environ["OCI_PRIVATE_KEY"],
+        key_file=os.environ["OCI_key_file"],
         regions=os.environ["OCI_REGION"],  # Changed to regions parameter
         label="TEST",
         compartment_id=os.environ["OCI_COMPARTMENT_ID"],  # optional
