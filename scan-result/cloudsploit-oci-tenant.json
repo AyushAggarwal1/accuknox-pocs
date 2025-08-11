@@ -2754,6 +2754,16 @@
     "category": "Identity",
     "title": "Users MFA Enabled",
     "description": "Ensures a multi-factor authentication device is enabled for all users within the account.",
+    "resource": "ocid1.user.oc1..aaaaaaaar4qrkgy3ryptgnexxtmdy2ht4lda54ozmg7czzcruaq5djquj3la",
+    "region": "global",
+    "status": "FAIL",
+    "message": "The user has MFA disabled"
+  },
+  {
+    "plugin": "usersMfaEnabled",
+    "category": "Identity",
+    "title": "Users MFA Enabled",
+    "description": "Ensures a multi-factor authentication device is enabled for all users within the account.",
     "resource": "ocid1.user.oc1..aaaaaaaanizj3njpnyzpft6hsc2wldlbhg2rw3cbvmpuo6hry7l7sx3bjehq",
     "region": "global",
     "status": "OK",
@@ -2788,16 +2798,6 @@
     "region": "global",
     "status": "OK",
     "message": "The user has MFA enabled"
-  },
-  {
-    "plugin": "usersMfaEnabled",
-    "category": "Identity",
-    "title": "Users MFA Enabled",
-    "description": "Ensures a multi-factor authentication device is enabled for all users within the account.",
-    "resource": "ocid1.user.oc1..aaaaaaaa25uy6ui6td2atj6idf3hq6gfpnepvn6z4st44i5qcazwx6wjtmgq",
-    "region": "global",
-    "status": "FAIL",
-    "message": "The user has MFA disabled"
   },
   {
     "plugin": "passwordRequiresLowercase",
@@ -2854,16 +2854,6 @@
     "category": "Identity",
     "title": "Empty Groups",
     "description": "Ensures all groups have at least one member.",
-    "resource": "ocid1.group.oc1..aaaaaaaacx7pey6opcinu4kz4ort6q26hax6nwfslqwvu4vxmzq2lpmhucgq",
-    "region": "us-ashburn-1",
-    "status": "OK",
-    "message": "Group: SecurityAudit contains 3 user(s)"
-  },
-  {
-    "plugin": "emptyGroups",
-    "category": "Identity",
-    "title": "Empty Groups",
-    "description": "Ensures all groups have at least one member.",
     "resource": "ocid1.group.oc1..aaaaaaaavfd32nyy2ngmv6k5rll4mjsafjwjgj2erccgavmg67c4fuvqrq4q",
     "region": "us-ashburn-1",
     "status": "OK",
@@ -2878,6 +2868,16 @@
     "region": "us-ashburn-1",
     "status": "WARN",
     "message": "Group: All Domain Users does not contain any users"
+  },
+  {
+    "plugin": "emptyGroups",
+    "category": "Identity",
+    "title": "Empty Groups",
+    "description": "Ensures all groups have at least one member.",
+    "resource": "ocid1.group.oc1..aaaaaaaayynzyfaqzoq7egg7hntyx3judqfsply6afiynu2zspaxk3aaibea",
+    "region": "us-ashburn-1",
+    "status": "OK",
+    "message": "Group: SecurityAudit contains 1 user(s)"
   },
   {
     "plugin": "excessivePolicies",
@@ -2924,7 +2924,7 @@
     "category": "Identity",
     "title": "Excessive Policy Statements",
     "description": "Determine if there are an excessive number of policy statements in the account",
-    "resource": "ocid1.policy.oc1..aaaaaaaavxysk63mjhqzeeayrz45ckkwoltjlc7ncffo3quuujlwizunkfyq",
+    "resource": "ocid1.policy.oc1..aaaaaaaawwxsqpdgi6y5vjszhbsopidv7lnbc6mjrfzpwrb6s5y4bqdu6efa",
     "region": "us-ashburn-1",
     "status": "OK",
     "message": "Acceptable number of policy statements: 1 found"
@@ -2984,6 +2984,16 @@
     "category": "Identity",
     "title": "Users Email Verified",
     "description": "Ensure all IAM user accounts have a valid and current email address.",
+    "resource": "ocid1.user.oc1..aaaaaaaar4qrkgy3ryptgnexxtmdy2ht4lda54ozmg7czzcruaq5djquj3la",
+    "region": "us-ashburn-1",
+    "status": "FAIL",
+    "message": "Email for user cloudscan@accuknox.com is not verified"
+  },
+  {
+    "plugin": "usersEmailVerified",
+    "category": "Identity",
+    "title": "Users Email Verified",
+    "description": "Ensure all IAM user accounts have a valid and current email address.",
     "resource": "ocid1.user.oc1..aaaaaaaanizj3njpnyzpft6hsc2wldlbhg2rw3cbvmpuo6hry7l7sx3bjehq",
     "region": "us-ashburn-1",
     "status": "OK",
@@ -3018,16 +3028,6 @@
     "region": "us-ashburn-1",
     "status": "OK",
     "message": "Email for user ramakant@accuknox.com is verified"
-  },
-  {
-    "plugin": "usersEmailVerified",
-    "category": "Identity",
-    "title": "Users Email Verified",
-    "description": "Ensure all IAM user accounts have a valid and current email address.",
-    "resource": "ocid1.user.oc1..aaaaaaaa25uy6ui6td2atj6idf3hq6gfpnepvn6z4st44i5qcazwx6wjtmgq",
-    "region": "us-ashburn-1",
-    "status": "FAIL",
-    "message": "Email for user cloudscan@accuknox.com is not verified"
   },
   {
     "plugin": "adminUserAPIKeys",
@@ -3077,7 +3077,7 @@
     "resource": "ocid1.user.oc1..aaaaaaaa34eau4dxeepidyi476qhnxfjhdlhsequwgj6ysmztifirjwq2hbq",
     "region": "global",
     "status": "FAIL",
-    "message": "User's last successful login was 441 days ago"
+    "message": "User's last successful login was 448 days ago"
   },
   {
     "plugin": "usersPasswordLastUsed",
@@ -3087,7 +3087,17 @@
     "resource": "ocid1.user.oc1..aaaaaaaaofvttcruml336z36lgogfbeytvlwocih5fvlpzfrgijyuae5og6a",
     "region": "global",
     "status": "OK",
-    "message": "User's last successful login was 12 days ago"
+    "message": "User's last successful login was 19 days ago"
+  },
+  {
+    "plugin": "usersPasswordLastUsed",
+    "category": "Identity",
+    "title": "Users Password Last Used",
+    "description": "Detect users that have not logged in for a period of time and should be deactivated.",
+    "resource": "ocid1.user.oc1..aaaaaaaar4qrkgy3ryptgnexxtmdy2ht4lda54ozmg7czzcruaq5djquj3la",
+    "region": "global",
+    "status": "OK",
+    "message": "User was created 3 days ago but never logged in"
   },
   {
     "plugin": "usersPasswordLastUsed",
@@ -3097,7 +3107,7 @@
     "resource": "ocid1.user.oc1..aaaaaaaanizj3njpnyzpft6hsc2wldlbhg2rw3cbvmpuo6hry7l7sx3bjehq",
     "region": "global",
     "status": "FAIL",
-    "message": "User's last successful login was 376 days ago"
+    "message": "User's last successful login was 383 days ago"
   },
   {
     "plugin": "usersPasswordLastUsed",
@@ -3107,7 +3117,7 @@
     "resource": "ocid1.user.oc1..aaaaaaaabibbphgrf5ow3ybcxp7vxbasgil4ltowrji5etfzaaokw4zvugeq",
     "region": "global",
     "status": "OK",
-    "message": "User's last successful login was 26 days ago"
+    "message": "User's last successful login was 33 days ago"
   },
   {
     "plugin": "usersPasswordLastUsed",
@@ -3117,7 +3127,7 @@
     "resource": "ocid1.user.oc1..aaaaaaaabfvruj6y3ucj2awrn6wfymfiovgghsc23drtmx3yuqlm22g266ja",
     "region": "global",
     "status": "OK",
-    "message": "User's last successful login was 0 days ago"
+    "message": "User's last successful login was 2 days ago"
   },
   {
     "plugin": "usersPasswordLastUsed",
@@ -3127,17 +3137,7 @@
     "resource": "ocid1.user.oc1..aaaaaaaablvimjgfobe7ffmbsrxg32gxucg6mkkjomvkuowvbq4fhdgn4xya",
     "region": "global",
     "status": "OK",
-    "message": "User's last successful login was 3 days ago"
-  },
-  {
-    "plugin": "usersPasswordLastUsed",
-    "category": "Identity",
-    "title": "Users Password Last Used",
-    "description": "Detect users that have not logged in for a period of time and should be deactivated.",
-    "resource": "ocid1.user.oc1..aaaaaaaa25uy6ui6td2atj6idf3hq6gfpnepvn6z4st44i5qcazwx6wjtmgq",
-    "region": "global",
-    "status": "OK",
-    "message": "User was created 28 days ago but never logged in"
+    "message": "User's last successful login was 10 days ago"
   },
   {
     "plugin": "defaultTagsForResources",
@@ -21836,8 +21836,8 @@
     "description": "Ensures that the audit log retention period is configured correctly.",
     "resource": "N/A",
     "region": "us-ashburn-1",
-    "status": "OK",
-    "message": "Audit configuration period is 365 days"
+    "status": "UNKNOWN",
+    "message": "Unable to query for audit configurations: Unable to obtain data"
   },
   {
     "plugin": "okePrivateEndpoint",
