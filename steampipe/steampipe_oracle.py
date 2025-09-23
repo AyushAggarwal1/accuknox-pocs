@@ -329,7 +329,8 @@ class OCIAsset(AssetInventoryBase):
 
         if filters:
             query += " where " + " and ".join(filters)
-
+            # print steampipe sql query
+            print("steampipe query ------------",query)
         return query
     
     def _is_tenant_level_table(self, table):
