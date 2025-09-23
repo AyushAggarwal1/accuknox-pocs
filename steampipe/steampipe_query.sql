@@ -18,9 +18,7 @@ select *
 from <<table_name>>
 where compartment_id in (select id from comps);
 
--- sample query
-
-
+-- sample query 1 to get all compartments and sub-compartments
 with recursive comps as (
   select id from oci_identity_compartment where id = '<<compartment_id>>'
   union all
@@ -32,3 +30,8 @@ with recursive comps as (
 select *
 from oci_identity_availability_domain
 where compartment_id in (select id from comps);
+
+-- sample query 2 only for compartment
+select *
+from <<table_name>>
+where compartment_id = '<<compartment_id>>';
