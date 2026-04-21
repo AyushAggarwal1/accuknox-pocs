@@ -43,7 +43,7 @@ poc of security tools
 4. For `cloudsploit`
     - Clone `cloudsploit` in `cloudsploit/` folder
     - Create another folder named `configs` inside `cloudsploit/<cloned-cloudsploit>/`    
-    - cmd to run `node index.js --config /home/ayush/accuknox/accuknox-pocs/configs/cloudsploit/config.js  --json cs-results.json`
+    - cmd to run `node index.js --config /home/ayush/Desktop/accuknox/pocs/cloudsploit/cs-accuknox/config.js  --json cs-results.json`
     ```shell
         {
             "tenancyId": "ocid1.tenancy.oc1..",
